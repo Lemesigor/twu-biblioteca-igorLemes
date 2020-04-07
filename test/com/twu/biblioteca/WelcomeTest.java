@@ -18,6 +18,6 @@ public class WelcomeTest {
 
     @Test
     public void welcomeMessageTest(){
-        assertThat(welcome.welcomeMessage(), is(equalTo(welcome.message)));
+        assertThat(welcome.welcomeMessage(), is(equalTo(WelcomeImpl.message)));
     }
 }
