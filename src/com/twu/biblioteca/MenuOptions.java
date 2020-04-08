@@ -4,17 +4,25 @@ import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 import com.twu.biblioteca.ListOfBooks;
 
-public class MenuOptions {
-    public ListOfBooks listOfBooks = new ListOfBooks();
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    public String showMenu(){
-        return listOfBooks.showOptionName();
+public class MenuOptions {
+
+    List<Option> listOfOptions = new ArrayList<Option>(Arrays.asList(
+
+             new ListOfBooks()
+    ));
+
+    public void showMenu(){
+
     }
 
 
-    public Option choseOption(String optionChoose) throws InvalidOptionException{
-        if (optionChoose.equals("1")) {
-            return new ListOfBooks();
+    public Option choseOption(int optionChoose) throws InvalidOptionException{
+        if (optionChoose  == 1) {
+            return listOfOptions.get(optionChoose - 1);
         } else {
             throw new InvalidOptionException("Please select a valid option!");
         }
