@@ -20,4 +20,6 @@ public class WelcomeTest {
     public void welcomeMessageTest(){
         assertThat(welcome.welcomeMessage(), is(equalTo(WelcomeImpl.message)));
     }
+
+
 }

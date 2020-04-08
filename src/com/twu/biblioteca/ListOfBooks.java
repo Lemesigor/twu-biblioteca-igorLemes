@@ -1,7 +1,9 @@
 package com.twu.biblioteca;
 
 
-public class ListOfBooks implements Option{
+import com.twu.biblioteca.interfaces.Option;
+
+public class ListOfBooks implements Option {
 
     @Override
     public String showOptionName() {
