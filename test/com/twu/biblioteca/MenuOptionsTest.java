@@ -15,14 +15,14 @@ public class MenuOptionsTest {
     MenuOptions menu;
 
     @Before
-    public void setUo(){
-      menu = new MenuOptions();
+    public void setUo() {
+        menu = new MenuOptions();
     }
 
     @Test
-    public void showMenuTest(){
+    public void showMenuTest() {
         String stringTest = "List of books";
-        assertThat(menu.listOfBooks.showOptionName(),is(equalTo(stringTest)));
+        assertThat(menu.listOfBooks.showOptionName(), is(equalTo(stringTest)));
     }
 
     @Test

@@ -12,12 +12,12 @@ public class ListOfBooksTest {
     ListOfBooks listOfBooksOption;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         listOfBooksOption = new ListOfBooks();
     }
 
     @Test
-    public void showOptionNameTest(){
+    public void showOptionNameTest() {
         assertThat(listOfBooksOption.showOptionName(), is(instanceOf(String.class)));
     }
 }
