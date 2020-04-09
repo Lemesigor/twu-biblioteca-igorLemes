@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ListOfBooks implements Option {
-    List<Book> books =  new ArrayList<Book>(Arrays.asList(
+    private List<Book> books =  new ArrayList<Book>(Arrays.asList(
             new Book ("The Godfather", "Francis Ford Coppola", "1972"),
             new Book ("Pulp Fiction", "Quentin Tarantino", "1994"),
             new Book ("Schindlers List", "Steven Spielberg", "1994"),
@@ -38,7 +38,13 @@ public class ListOfBooks implements Option {
         return "List of books";
     }
 
-    public void showMovieList(){
+    @Override
+    public void optionAction() {
+        this.printBookList();
+
+    }
+
+    private void printBookList(){
         for( Book book : books){
             System.out.println(book.toString());
         }

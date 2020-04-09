@@ -15,10 +15,17 @@ public class MenuOptions {
              new ListOfBooks()
     ));
 
-    public void showMenu(){
+    public void printMenuOptions(){
+        System.out.println("######## Select an option ########");
+        this.printListOfOptions();
 
     }
 
+    private void printListOfOptions(){
+        for(int i = 0; i < this.listOfOptions.size();i++){
+            System.out.println("(" + (i + 1) + ")  " + listOfOptions.get(i).showOptionName() );
+        }
+    }
 
     public Option choseOption(int optionChoose) throws InvalidOptionException{
         if (optionChoose  == 1) {

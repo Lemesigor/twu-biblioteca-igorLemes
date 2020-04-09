@@ -15,19 +15,21 @@ public class BibliotecaApp {
 
         System.out.println(welcome.welcomeMessage());
 
-        System.out.print("\n");
 
         Scanner scan = new Scanner(System.in);
-        int lineRead;
+        int userInputRead;
 
         do {
-            lineRead = scan.nextInt();
+            System.out.print("\n");
+            menuOptions.printMenuOptions();
+            userInputRead = scan.nextInt();
             try {
-                Option optionSelected = menuOptions.choseOption(lineRead);
+                Option optionSelected = menuOptions.choseOption(userInputRead);
+                optionSelected.optionAction();
 
             } catch (InvalidOptionException ex) {
                 System.out.println(ex.getMessage());
             }
-        } while (lineRead !=  0 );
+        } while (userInputRead !=  0 );
     }
 }
