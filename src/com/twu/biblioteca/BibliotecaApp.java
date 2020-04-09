@@ -19,17 +19,20 @@ public class BibliotecaApp {
         Scanner scan = new Scanner(System.in);
         int userInputRead;
 
-        do {
+        boolean continueOption = true;
+
+        while(continueOption) {
             System.out.print("\n");
             menuOptions.printMenuOptionsInterface();
             userInputRead = scan.nextInt();
             try {
                 Option optionSelected = menuOptions.choseOption(userInputRead);
-                optionSelected.optionAction();
-
+                menuOptions.executeOptionAction(optionSelected);
+                continueOption = menuOptions.loopingController(optionSelected);
             } catch (InvalidOptionException ex) {
                 System.out.println(ex.getMessage());
             }
-        } while (userInputRead !=  0 );
+        }
+        scan.close();
     }
 }

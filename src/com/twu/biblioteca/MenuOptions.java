@@ -38,4 +38,12 @@ public class MenuOptions {
             throw new InvalidOptionException("Please select a valid option!");
         }
     }
+
+    public void executeOptionAction(Option selectedOption) {
+        selectedOption.optionAction();
+    }
+
+    public boolean loopingController(Option selectedOption){
+        return selectedOption.continueLoop();
+    }
 }

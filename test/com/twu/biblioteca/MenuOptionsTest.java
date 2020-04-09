@@ -15,7 +15,7 @@ public class MenuOptionsTest {
     MenuOptions menu;
 
     @Before
-    public void setUo() {
+    public void setUp() {
         menu = new MenuOptions();
     }
 
@@ -36,4 +36,6 @@ public class MenuOptionsTest {
         int optionChoose = 100;
         menu.choseOption(optionChoose);
     }
+
 }
+
