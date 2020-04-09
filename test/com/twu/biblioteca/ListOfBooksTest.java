@@ -21,5 +21,9 @@ public class ListOfBooksTest {
         assertThat(listOfBooksOption.showOptionName(), is(instanceOf(String.class)));
     }
 
+    @Test
+    public void continueLoopTest(){
+        assertThat(listOfBooksOption.continueLoop(), is(true));
+    }
 
 }

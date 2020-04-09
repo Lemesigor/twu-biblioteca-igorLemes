@@ -22,7 +22,7 @@ public class MenuOptionsTest {
     @Test
     public void showMenuTest() {
         String stringTest = "List of books";
-        //assertThat(menu.listOfBooks.showOptionName(), is(equalTo(stringTest)));
+        assertThat(menu.listOfOptions.get(0).showOptionName(), is(equalTo(stringTest)));
     }
 
     @Test

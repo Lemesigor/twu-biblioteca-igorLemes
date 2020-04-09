@@ -21,7 +21,7 @@ public class BibliotecaApp {
 
         do {
             System.out.print("\n");
-            menuOptions.printMenuOptions();
+            menuOptions.printMenuOptionsInterface();
             userInputRead = scan.nextInt();
             try {
                 Option optionSelected = menuOptions.choseOption(userInputRead);

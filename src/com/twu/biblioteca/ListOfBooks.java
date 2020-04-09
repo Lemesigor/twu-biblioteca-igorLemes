@@ -41,7 +41,11 @@ public class ListOfBooks implements Option {
     @Override
     public void optionAction() {
         this.printBookList();
+    }
 
+    @Override
+    public boolean continueLoop() {
+        return true;
     }
 
     private void printBookList(){

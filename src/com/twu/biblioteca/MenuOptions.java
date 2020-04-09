@@ -12,23 +12,27 @@ public class MenuOptions {
 
     List<Option> listOfOptions = new ArrayList<Option>(Arrays.asList(
 
-             new ListOfBooks()
+            new ListOfBooks(),
+            new ExitOption()
     ));
 
-    public void printMenuOptions(){
+    public void printMenuOptionsInterface() {
         System.out.println("######## Select an option ########");
         this.printListOfOptions();
 
     }
 
-    private void printListOfOptions(){
-        for(int i = 0; i < this.listOfOptions.size();i++){
-            System.out.println("(" + (i + 1) + ")  " + listOfOptions.get(i).showOptionName() );
+    public void menuOptionsLoop(){
+
+    }
+    private void printListOfOptions() {
+        for (int i = 0; i < this.listOfOptions.size(); i++) {
+            System.out.println("(" + (i + 1) + ")  " + listOfOptions.get(i).showOptionName());
         }
     }
 
-    public Option choseOption(int optionChoose) throws InvalidOptionException{
-        if (optionChoose  == 1) {
+    public Option choseOption(int optionChoose) throws InvalidOptionException {
+        if (optionChoose <= listOfOptions.size()) {
             return listOfOptions.get(optionChoose - 1);
         } else {
             throw new InvalidOptionException("Please select a valid option!");
