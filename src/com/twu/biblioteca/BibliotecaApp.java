@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.database.BooksLibrary;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.interfaces.Welcome;
@@ -12,6 +13,9 @@ public class BibliotecaApp {
 
         Welcome welcome = new WelcomeImpl();
         MenuOptions menuOptions = new MenuOptions();
+        BooksLibrary booksLibrary = new BooksLibrary();
+
+        CheckoutBook checkoutBook = new CheckoutBook(booksLibrary);
 
         System.out.println(welcome.welcomeMessage());
 
@@ -21,7 +25,7 @@ public class BibliotecaApp {
 
         boolean continueOption = true;
 
-        while(continueOption) {
+        while (continueOption) {
             System.out.print("\n");
             menuOptions.printMenuOptionsInterface();
             userInputRead = scan.nextInt();

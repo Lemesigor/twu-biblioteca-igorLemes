@@ -1,14 +1,29 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.database;
 
-
-import com.twu.biblioteca.interfaces.Option;
+import com.twu.biblioteca.Book;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ListOfBooks implements Option {
-    private List<Book> avaliableBooks = new ArrayList<Book>(Arrays.asList(
+public class BooksLibrary {
+    public List<Book> getAvaliableBooks() {
+        return avaliableBooks;
+    }
+
+    public void setAvaliableBooks(List<Book> avaliableBooks) {
+        this.avaliableBooks = avaliableBooks;
+    }
+
+    public List<Book> getCheckoutBooks() {
+        return checkoutBooks;
+    }
+
+    public void setCheckoutBooks(List<Book> checkoutBooks) {
+        this.checkoutBooks = checkoutBooks;
+    }
+
+    public List<Book> avaliableBooks = new ArrayList<Book>(Arrays.asList(
             new Book("The Godfather", "Francis Ford Coppola", "1972"),
             new Book("Pulp Fiction", "Quentin Tarantino", "1994"),
             new Book("Schindlers List", "Steven Spielberg", "1994"),
@@ -32,39 +47,6 @@ public class ListOfBooks implements Option {
             new Book("Casino Royale", "Martin Campbell", "2006")
     ));
 
-    private List<Book> checkoutBooks = new ArrayList<Book>();
-
-    @Override
-    public String showOptionName() {
-
-        return "List of books";
-    }
-
-    @Override
-    public void optionAction() {
-        this.printBookList();
-    }
-
-    @Override
-    public boolean continueLoop() {
-        return true;
-    }
-
-    private void printBookList() {
-        for (int i = 0; i < avaliableBooks.size(); i++) {
-            System.out.println(i + "-- " + avaliableBooks.get(i).toString());
-        }
-    }
-
-
-    public List<Book> getAvaliableBooks() {
-        return avaliableBooks;
-    }
-
-
-    public List<Book> getCheckoutBooks() {
-        return checkoutBooks;
-    }
-
+    public List<Book> checkoutBooks = new ArrayList<Book>();
 
 }

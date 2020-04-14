@@ -13,6 +13,7 @@ public class MenuOptions {
     List<Option> listOfOptions = new ArrayList<Option>(Arrays.asList(
 
             new ListOfBooks(),
+//            new CheckoutBook(),
             new ExitOption()
     ));
 
