@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.database.BooksLibrary;
 import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 import com.twu.biblioteca.ListOfBooks;
@@ -9,13 +10,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MenuOptions {
+    BooksLibrary mediaLibrary;
 
-    List<Option> listOfOptions = new ArrayList<Option>(Arrays.asList(
+    List<Option> listOfOptions;
 
-            new ListOfBooks(),
-//            new CheckoutBook(),
-            new ExitOption()
-    ));
+    public MenuOptions(BooksLibrary mediaLibrary) {
+
+        this.mediaLibrary = mediaLibrary;
+        this.initializeOptions();
+
+    }
 
     public void printMenuOptionsInterface() {
         System.out.println("######## Select an option ########");
@@ -46,5 +50,14 @@ public class MenuOptions {
 
     public boolean loopingController(Option selectedOption){
         return selectedOption.continueLoop();
+    }
+
+    public void initializeOptions() {
+        listOfOptions = new ArrayList<Option>(Arrays.asList(
+
+                new ListOfBooks(this.mediaLibrary),
+                new CheckoutBook(this.mediaLibrary),
+                new ExitOption()
+        ));
     }
 }

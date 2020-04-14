@@ -12,23 +12,25 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         Welcome welcome = new WelcomeImpl();
-        MenuOptions menuOptions = new MenuOptions();
         BooksLibrary booksLibrary = new BooksLibrary();
+        MenuOptions menuOptions = new MenuOptions(booksLibrary);
 
         CheckoutBook checkoutBook = new CheckoutBook(booksLibrary);
 
         System.out.println(welcome.welcomeMessage());
 
 
-        Scanner scan = new Scanner(System.in);
-        int userInputRead;
 
         boolean continueOption = true;
 
         while (continueOption) {
             System.out.print("\n");
+
+            Scanner scan = new Scanner(System.in);
             menuOptions.printMenuOptionsInterface();
-            userInputRead = scan.nextInt();
+            int userInputRead = scan.nextInt();
+//            scan.close();
+
             try {
                 Option optionSelected = menuOptions.choseOption(userInputRead);
                 menuOptions.executeOptionAction(optionSelected);
@@ -37,6 +39,5 @@ public class BibliotecaApp {
                 System.out.println(ex.getMessage());
             }
         }
-        scan.close();
     }
 }

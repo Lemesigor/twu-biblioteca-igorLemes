@@ -41,4 +41,9 @@ public class CheckoutBookTest {
 
     }
 
+    @Test
+    public void optionChoosedTest(){
+
+    }
+
 }

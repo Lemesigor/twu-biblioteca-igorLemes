@@ -3,6 +3,9 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.database.BooksLibrary;
 import com.twu.biblioteca.interfaces.Option;
 
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
 public class CheckoutBook implements Option {
 
     BooksLibrary booksLibraryDatabase;
@@ -24,6 +27,21 @@ public class CheckoutBook implements Option {
     @Override
     public void optionAction() {
 
+        System.out.println("Type the book code: ");
+        bookChoosed();
+    }
+
+    public int readUserInput(){
+        Scanner scan = new Scanner(System.in);
+        int userInputRead = scan.nextInt();
+//        scan.close();
+        return userInputRead;
+
+    }
+
+    public void bookChoosed(){
+        checkoutBook(this.readUserInput());
+        System.out.println("Sucesooooo");
     }
 
     @Override
