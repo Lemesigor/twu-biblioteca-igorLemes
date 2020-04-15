@@ -50,7 +50,7 @@ public class CheckoutBook implements Option {
     }
 
     public void checkoutBook(int bookIndex) {
-        Book book = this.booksLibraryDatabase.avaliableBooks.get(bookIndex);
+        Book book = getABookFromDatabase(bookIndex);
         this.booksLibraryDatabase.checkoutBooks.add(book);
     }
 
@@ -58,5 +58,19 @@ public class CheckoutBook implements Option {
         Book book = this.booksLibraryDatabase.avaliableBooks.get(bookIndex);
         this.booksLibraryDatabase.avaliableBooks.remove(bookIndex);
         return book;
+    }
+
+    public boolean isBookAvaliable(Book book) {
+        if(this.booksLibraryDatabase.checkoutBooks.contains(book)){
+            return false;
+        } else{
+            return true;
+        }
+
+    }
+
+
+    public Book getABookFromDatabase(int bookIndex) {
+        return this.booksLibraryDatabase.avaliableBooks.get(bookIndex);
     }
 }

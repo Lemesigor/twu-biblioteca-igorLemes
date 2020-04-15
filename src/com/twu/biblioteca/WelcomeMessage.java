@@ -11,4 +11,5 @@ public class WelcomeMessage implements GenericMessage {
         return message;
     }
 
+
 }

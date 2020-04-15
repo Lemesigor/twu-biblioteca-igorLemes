@@ -4,8 +4,7 @@ import com.twu.biblioteca.database.BooksLibrary;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
 public class CheckoutBookTest {
@@ -42,8 +41,15 @@ public class CheckoutBookTest {
     }
 
     @Test
-    public void optionChoosedTest(){
-
+    public void isBookCheckouted(){
+        checkoutBook.checkoutBook(1);
+        Book book = library.avaliableBooks.get(1);
+        assertThat(checkoutBook.isBookAvaliable(book), is(false));
+    }
+    @Test
+    public void getABookFromDatabase(){
+        int bookIndex = 1;
+        assertThat(checkoutBook.getABookFromDatabase(bookIndex), is(instanceOf(Book.class)));
     }
 
 }
