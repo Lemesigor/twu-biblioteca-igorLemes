@@ -50,7 +50,7 @@ public class CheckoutBook implements Option {
     }
 
     public void checkoutBook(int bookIndex) {
-        Book book = this.popCheckoutBookFromList(bookIndex);
+        Book book = this.booksLibraryDatabase.avaliableBooks.get(bookIndex);
         this.booksLibraryDatabase.checkoutBooks.add(book);
     }
 
