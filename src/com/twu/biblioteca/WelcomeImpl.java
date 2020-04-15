@@ -1,13 +1,13 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.interfaces.Welcome;
+import com.twu.biblioteca.interfaces.GenericMessage;
 
-public class WelcomeImpl implements Welcome {
+public class WelcomeImpl implements GenericMessage {
 
     public static final String message = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
 
     @Override
-    public String welcomeMessage() {
+    public String printMessageToUser() {
         return message;
     }
 
