@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class CheckoutBook implements Option {
 
     BooksLibrary booksLibraryDatabase;
+    SucessCheckoutMessage sucessMessage = new SucessCheckoutMessage();
 
     public CheckoutBook(){
 
@@ -29,19 +30,18 @@ public class CheckoutBook implements Option {
 
         System.out.println("Type the book code: ");
         bookChoosed();
+        System.out.println(sucessMessage.printMessageToUser());
     }
 
     public int readUserInput(){
         Scanner scan = new Scanner(System.in);
         int userInputRead = scan.nextInt();
-//        scan.close();
         return userInputRead;
 
     }
 
     public void bookChoosed(){
         checkoutBook(this.readUserInput());
-        System.out.println("Sucesooooo");
     }
 
     @Override

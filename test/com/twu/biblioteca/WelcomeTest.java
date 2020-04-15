@@ -9,16 +9,16 @@ import static org.junit.Assert.*;
 
 public class WelcomeTest {
 
-    WelcomeImpl welcome;
+    WelcomeMessage welcome;
 
     @Before
     public void setUp(){
-        welcome = new WelcomeImpl();
+        welcome = new WelcomeMessage();
     }
 
     @Test
     public void welcomeMessageTest(){
-        assertThat(welcome.printMessageToUser(), is(equalTo(WelcomeImpl.message)));
+        assertThat(welcome.printMessageToUser(), is(equalTo(WelcomeMessage.message)));
     }
 
 

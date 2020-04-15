@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.database.BooksLibrary;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 import com.twu.biblioteca.interfaces.Option;
-import com.twu.biblioteca.interfaces.Welcome;
+import com.twu.biblioteca.interfaces.GenericMessage;
 
 import java.util.Scanner;
 
@@ -11,14 +11,12 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
 
-        Welcome welcome = new WelcomeImpl();
+        GenericMessage welcome = new WelcomeMessage();
         BooksLibrary booksLibrary = new BooksLibrary();
         MenuOptions menuOptions = new MenuOptions(booksLibrary);
 
-        CheckoutBook checkoutBook = new CheckoutBook(booksLibrary);
 
-        System.out.println(welcome.welcomeMessage());
-
+        System.out.println(welcome.printMessageToUser());
 
 
         boolean continueOption = true;
