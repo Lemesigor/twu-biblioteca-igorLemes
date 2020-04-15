@@ -2,16 +2,18 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.database.BooksLibrary;
 import com.twu.biblioteca.interfaces.Option;
+import com.twu.biblioteca.messages.BookNotAvaliableMessage;
+import com.twu.biblioteca.messages.SucessCheckoutMessage;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class CheckoutBook implements Option {
 
     BooksLibrary booksLibraryDatabase;
     SucessCheckoutMessage sucessMessage = new SucessCheckoutMessage();
+    BookNotAvaliableMessage errorMessage = new BookNotAvaliableMessage();
 
-    public CheckoutBook(){
+    public CheckoutBook() {
 
     }
 
@@ -30,18 +32,21 @@ public class CheckoutBook implements Option {
 
         System.out.println("Type the book code: ");
         bookChoosed();
-        System.out.println(sucessMessage.printMessageToUser());
     }
 
-    public int readUserInput(){
+    public int readUserInput() {
         Scanner scan = new Scanner(System.in);
         int userInputRead = scan.nextInt();
         return userInputRead;
 
     }
 
-    public void bookChoosed(){
-        checkoutBook(this.readUserInput());
+    public void bookChoosed() {
+        try {
+            checkoutBook(this.readUserInput());
+        } catch (Exception ex) {
+            System.out.println(errorMessage.printMessageToUser());
+        }
     }
 
     @Override
@@ -51,19 +56,24 @@ public class CheckoutBook implements Option {
 
     public void checkoutBook(int bookIndex) {
         Book book = getABookFromDatabase(bookIndex);
-        this.booksLibraryDatabase.checkoutBooks.add(book);
+        if (isBookAvaliable(book)) {
+            this.booksLibraryDatabase.checkoutBooks.add(book);
+            System.out.println(sucessMessage.printMessageToUser());
+        } else {
+            System.out.println(errorMessage.printMessageToUser());
+        }
     }
 
-    public Book popCheckoutBookFromList(int bookIndex){
+    public Book popCheckoutBookFromList(int bookIndex) {
         Book book = this.booksLibraryDatabase.avaliableBooks.get(bookIndex);
         this.booksLibraryDatabase.avaliableBooks.remove(bookIndex);
         return book;
     }
 
     public boolean isBookAvaliable(Book book) {
-        if(this.booksLibraryDatabase.checkoutBooks.contains(book)){
+        if (this.booksLibraryDatabase.checkoutBooks.contains(book)) {
             return false;
-        } else{
+        } else {
             return true;
         }
 

@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.interfaces.GenericMessage;
+import com.twu.biblioteca.messages.SucessCheckoutMessage;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -4,6 +4,7 @@ import com.twu.biblioteca.database.BooksLibrary;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.interfaces.GenericMessage;
+import com.twu.biblioteca.messages.WelcomeMessage;
 
 import java.util.Scanner;
 
