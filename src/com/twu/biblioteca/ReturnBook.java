@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.database.BooksLibrary;
 import com.twu.biblioteca.interfaces.Option;
+import com.twu.biblioteca.messages.InvalidBookToReturnMessage;
 import com.twu.biblioteca.messages.SucessReturnBookMessage;
 
 import java.util.Scanner;
@@ -10,6 +11,7 @@ public class ReturnBook implements Option {
 
     BooksLibrary booksLibrary;
     SucessReturnBookMessage sucessReturnBookMessage = new SucessReturnBookMessage();
+    InvalidBookToReturnMessage invalidBookToReturnMessage = new InvalidBookToReturnMessage();
 
     public ReturnBook(BooksLibrary booksLibrary) {
         this.booksLibrary = booksLibrary;
@@ -20,13 +22,25 @@ public class ReturnBook implements Option {
     }
 
     public void returnABook(){
-        printCheckoutedBooks();
-        removeBookFromCheckout(getUserInput());
+        if(this.isABookChecked()){
+            printCheckoutedBooks();
+            try{
+                removeBookFromCheckout(getUserInput());
+            }catch (Exception ex){
+                System.out.println(invalidBookToReturnMessage.printMessageToUser());
+            }
+        } else {
+            System.out.println("You have no book to return");
+        }
     }
 
     public void removeBookFromCheckout(int bookIndex){
-        this.booksLibrary.checkoutBooks.remove(bookIndex);
-        System.out.println(sucessReturnBookMessage.printMessageToUser());
+        if(this.isABookChecked()){
+            this.booksLibrary.checkoutBooks.remove(bookIndex);
+            System.out.println(sucessReturnBookMessage.printMessageToUser());
+        } else {
+            System.out.println("You have no book to return");
+        }
     }
 
     public int getUserInput(){
@@ -43,7 +57,7 @@ public class ReturnBook implements Option {
     }
 
     public boolean isABookChecked() {
-        return !booksLibrary.avaliableBooks.isEmpty();
+        return !booksLibrary.checkoutBooks.isEmpty();
     }
 
     @Override
