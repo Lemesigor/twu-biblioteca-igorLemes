@@ -2,12 +2,14 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.database.BooksLibrary;
 import com.twu.biblioteca.interfaces.Option;
+import com.twu.biblioteca.messages.SucessReturnBookMessage;
 
 import java.util.Scanner;
 
 public class ReturnBook implements Option {
 
     BooksLibrary booksLibrary;
+    SucessReturnBookMessage sucessReturnBookMessage = new SucessReturnBookMessage();
 
     public ReturnBook(BooksLibrary booksLibrary) {
         this.booksLibrary = booksLibrary;
@@ -24,6 +26,7 @@ public class ReturnBook implements Option {
 
     public void removeBookFromCheckout(int bookIndex){
         this.booksLibrary.checkoutBooks.remove(bookIndex);
+        System.out.println(sucessReturnBookMessage.printMessageToUser());
     }
 
     public int getUserInput(){
