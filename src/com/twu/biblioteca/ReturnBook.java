@@ -36,7 +36,11 @@ public class ReturnBook implements Option {
 
     public void removeBookFromCheckout(int bookIndex){
         if(this.isABookChecked()){
+<<<<<<< HEAD
             this.mediaLibrary.checkoutBooks.remove(bookIndex);
+=======
+            this.booksLibrary.checkoutBooks.remove(bookIndex);
+>>>>>>> a09dda2b24da1f2321efcf9035e3484d67b57005
             System.out.println(sucessReturnBookMessage.printMessageToUser());
         } else {
             System.out.println("You have no book to return");
@@ -57,7 +61,11 @@ public class ReturnBook implements Option {
     }
 
     public boolean isABookChecked() {
+<<<<<<< HEAD
         return !mediaLibrary.checkoutBooks.isEmpty();
+=======
+        return !booksLibrary.checkoutBooks.isEmpty();
+>>>>>>> a09dda2b24da1f2321efcf9035e3484d67b57005
     }
 
     @Override
