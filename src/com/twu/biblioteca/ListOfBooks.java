@@ -1,21 +1,20 @@
 package com.twu.biblioteca;
 
 
-import com.twu.biblioteca.database.BooksLibrary;
+import com.twu.biblioteca.database.MediaLibrary;
 import com.twu.biblioteca.interfaces.Option;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ListOfBooks implements Option {
 
-    private BooksLibrary library;
+    private MediaLibrary library;
     private List<Book> avaliableBooks;
 
     private List<Book> checkoutBooks = new ArrayList<Book>();
 
-    public ListOfBooks(BooksLibrary mediaLibrary) {
+    public ListOfBooks(MediaLibrary mediaLibrary) {
         this.library = mediaLibrary;
         this.avaliableBooks = library.getAvaliableBooks();
     }

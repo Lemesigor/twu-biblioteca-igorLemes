@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.database.BooksLibrary;
+import com.twu.biblioteca.database.MediaLibrary;
 import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.messages.BookNotAvaliableMessage;
 import com.twu.biblioteca.messages.SucessCheckoutMessage;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class CheckoutBook implements Option {
 
-    BooksLibrary booksLibraryDatabase;
+    MediaLibrary mediaLibraryDatabase;
     SucessCheckoutMessage sucessMessage = new SucessCheckoutMessage();
     BookNotAvaliableMessage errorMessage = new BookNotAvaliableMessage();
 
@@ -17,8 +17,8 @@ public class CheckoutBook implements Option {
 
     }
 
-    public CheckoutBook(BooksLibrary listOfBooks) {
-        this.booksLibraryDatabase = listOfBooks;
+    public CheckoutBook(MediaLibrary listOfBooks) {
+        this.mediaLibraryDatabase = listOfBooks;
     }
 
 
@@ -57,7 +57,7 @@ public class CheckoutBook implements Option {
     public void checkoutBook(int bookIndex) {
         Book book = getABookFromDatabase(bookIndex);
         if (isBookAvaliable(book)) {
-            this.booksLibraryDatabase.checkoutBooks.add(book);
+            this.mediaLibraryDatabase.checkoutBooks.add(book);
             System.out.println(sucessMessage.printMessageToUser());
         } else {
             System.out.println(errorMessage.printMessageToUser());
@@ -65,13 +65,13 @@ public class CheckoutBook implements Option {
     }
 
     public Book popCheckoutBookFromList(int bookIndex) {
-        Book book = this.booksLibraryDatabase.avaliableBooks.get(bookIndex);
-        this.booksLibraryDatabase.avaliableBooks.remove(bookIndex);
+        Book book = this.mediaLibraryDatabase.avaliableBooks.get(bookIndex);
+        this.mediaLibraryDatabase.avaliableBooks.remove(bookIndex);
         return book;
     }
 
     public boolean isBookAvaliable(Book book) {
-        if (this.booksLibraryDatabase.checkoutBooks.contains(book)) {
+        if (this.mediaLibraryDatabase.checkoutBooks.contains(book)) {
             return false;
         } else {
             return true;
@@ -81,6 +81,6 @@ public class CheckoutBook implements Option {
 
 
     public Book getABookFromDatabase(int bookIndex) {
-        return this.booksLibraryDatabase.avaliableBooks.get(bookIndex);
+        return this.mediaLibraryDatabase.avaliableBooks.get(bookIndex);
     }
 }

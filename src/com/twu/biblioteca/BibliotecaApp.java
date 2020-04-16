@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.database.BooksLibrary;
+import com.twu.biblioteca.database.MediaLibrary;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.interfaces.GenericMessage;
@@ -13,8 +13,8 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         GenericMessage welcome = new WelcomeMessage();
-        BooksLibrary booksLibrary = new BooksLibrary();
-        MenuOptions menuOptions = new MenuOptions(booksLibrary);
+        MediaLibrary mediaLibrary = new MediaLibrary();
+        MenuOptions menuOptions = new MenuOptions(mediaLibrary);
 
 
         System.out.println(welcome.printMessageToUser());

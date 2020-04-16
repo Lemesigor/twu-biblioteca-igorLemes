@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.database.BooksLibrary;
+import com.twu.biblioteca.database.MediaLibrary;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,12 +11,12 @@ import static org.junit.Assert.*;
 public class ReturnBookTest {
 
     ReturnBook returnBook;
-    BooksLibrary booksLibrary;
+    MediaLibrary mediaLibrary;
 
     @Before
     public void setUp()  {
-        booksLibrary = new BooksLibrary();
-        returnBook = new ReturnBook(booksLibrary);
+        mediaLibrary = new MediaLibrary();
+        returnBook = new ReturnBook(mediaLibrary);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class ReturnBookTest {
 
     @Test
     public void isABookCheckedTest(){
-        booksLibrary.checkoutBooks.add(new Book("Test", "Test", "Test"));
+        mediaLibrary.checkoutBooks.add(new Book("Test", "Test", "Test"));
         assertThat(returnBook.isABookChecked(), is(true));
 
     }
@@ -47,9 +47,9 @@ public class ReturnBookTest {
 
     @Test
     public void removeBookFromCheckoutTest() {
-        booksLibrary.checkoutBooks.add(new Book("Test", "Test", "Test"));
+        mediaLibrary.checkoutBooks.add(new Book("Test", "Test", "Test"));
         returnBook.removeBookFromCheckout(0);
-        assertThat(booksLibrary.checkoutBooks.isEmpty(), is(true));
+        assertThat(mediaLibrary.checkoutBooks.isEmpty(), is(true));
     }
     @Test
     public void returnABookTest(){

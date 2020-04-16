@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BooksLibrary {
+public class MediaLibrary {
     public List<Book> getAvaliableBooks() {
         return avaliableBooks;
     }

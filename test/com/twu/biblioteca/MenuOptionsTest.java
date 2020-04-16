@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.database.BooksLibrary;
+import com.twu.biblioteca.database.MediaLibrary;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 import com.twu.biblioteca.interfaces.Option;
 import org.junit.Before;
@@ -13,11 +13,11 @@ import static org.junit.Assert.assertThat;
 public class MenuOptionsTest {
 
     MenuOptions menu;
-    BooksLibrary mediaLibrary;
+    MediaLibrary mediaLibrary;
 
     @Before
     public void setUp() {
-        mediaLibrary = new BooksLibrary();
+        mediaLibrary = new MediaLibrary();
         menu = new MenuOptions(mediaLibrary);
     }
 

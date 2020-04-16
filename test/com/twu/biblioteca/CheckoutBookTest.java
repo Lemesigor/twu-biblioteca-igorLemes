@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.database.BooksLibrary;
+import com.twu.biblioteca.database.MediaLibrary;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,11 +9,11 @@ import static org.junit.Assert.assertThat;
 
 public class CheckoutBookTest {
     CheckoutBook checkoutBook;
-    BooksLibrary library;
+    MediaLibrary library;
 
     @Before
     public void setUp(){
-        library = new BooksLibrary();
+        library = new MediaLibrary();
         checkoutBook = new CheckoutBook(library);
     }
 

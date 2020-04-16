@@ -1,20 +1,19 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.database.BooksLibrary;
+import com.twu.biblioteca.database.MediaLibrary;
 import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
-import com.twu.biblioteca.ListOfBooks;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MenuOptions {
-    BooksLibrary mediaLibrary;
+    MediaLibrary mediaLibrary;
 
     List<Option> listOfOptions;
 
-    public MenuOptions(BooksLibrary mediaLibrary) {
+    public MenuOptions(MediaLibrary mediaLibrary) {
 
         this.mediaLibrary = mediaLibrary;
         this.initializeOptions();
