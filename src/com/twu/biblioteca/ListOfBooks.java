@@ -2,12 +2,14 @@ package com.twu.biblioteca;
 
 
 import com.twu.biblioteca.database.MediaLibrary;
+import com.twu.biblioteca.interfaces.MediaList;
+import com.twu.biblioteca.interfaces.MediaReturn;
 import com.twu.biblioteca.interfaces.Option;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListOfBooks implements Option {
+public class ListOfBooks implements Option, MediaList {
 
     private MediaLibrary library;
     private List<Book> avaliableBooks;
@@ -30,7 +32,7 @@ public class ListOfBooks implements Option {
 
     @Override
     public void optionAction() {
-        this.printBookList();
+        this.printAvaliableMedia();
     }
 
     @Override
@@ -38,21 +40,12 @@ public class ListOfBooks implements Option {
         return true;
     }
 
-    private void printBookList() {
+
+
+    @Override
+    public void printAvaliableMedia() {
         for (int i = 0; i < avaliableBooks.size(); i++) {
             System.out.println(i + "-- " + avaliableBooks.get(i).toString());
         }
     }
-
-
-    public List<Book> getAvaliableBooks() {
-        return avaliableBooks;
-    }
-
-
-    public List<Book> getCheckoutBooks() {
-        return checkoutBooks;
-    }
-
-
 }
