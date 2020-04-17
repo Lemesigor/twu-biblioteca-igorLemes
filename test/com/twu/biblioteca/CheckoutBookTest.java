@@ -20,15 +20,15 @@ public class CheckoutBookTest {
     @Test
     public void popCheckoutBookFromListTest(){
         int bookIndex = 1;
-        int sizeOfTheAvaliableBooksBeforeCheckout = library.getAvaliableBooks().size();
+        int sizeOfTheAvaliableBooksBeforeCheckout = library.avaliableBooks.size();
         checkoutBook.popCheckoutBookFromList(bookIndex);
-        assertThat((library.getAvaliableBooks().size()), is(equalTo(sizeOfTheAvaliableBooksBeforeCheckout -1)));
+        assertThat((library.avaliableBooks.size()), is(equalTo(sizeOfTheAvaliableBooksBeforeCheckout -1)));
     }
 
     @Test
     public void getAPopedBookFromListTest(){
         int bookIndex = 1;
-        Book book = library.getAvaliableBooks().get(bookIndex);
+        Book book = library.avaliableBooks.get(bookIndex);
         assertThat((checkoutBook.popCheckoutBookFromList(bookIndex)), is(equalTo(book)));
     }
 
@@ -36,7 +36,7 @@ public class CheckoutBookTest {
     public void checkoutBookTest(){
         int bookIndex = 1;
         checkoutBook.checkoutBook(bookIndex);
-        assertThat(library.getCheckoutBooks().isEmpty(), is(false));
+        assertThat(library.avaliableBooks.isEmpty(), is(false));
 
     }
 

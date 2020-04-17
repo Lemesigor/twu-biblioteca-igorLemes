@@ -16,7 +16,7 @@ public class ListOfBooks implements Option {
 
     public ListOfBooks(MediaLibrary mediaLibrary) {
         this.library = mediaLibrary;
-        this.avaliableBooks = library.getAvaliableBooks();
+        this.avaliableBooks = library.avaliableBooks;
     }
 
     public ListOfBooks() {

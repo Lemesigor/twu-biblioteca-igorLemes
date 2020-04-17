@@ -21,12 +21,12 @@ public class ReturnBook implements Option {
     public ReturnBook() {
     }
 
-    public void returnABook(){
-        if(this.isABookChecked()){
+    public void returnABook() {
+        if (this.isABookChecked()) {
             printCheckoutedBooks();
-            try{
+            try {
                 removeBookFromCheckout(getUserInput());
-            }catch (Exception ex){
+            } catch (Exception ex) {
                 System.out.println(invalidBookToReturnMessage.printMessageToUser());
             }
         } else {
@@ -34,20 +34,18 @@ public class ReturnBook implements Option {
         }
     }
 
-    public void removeBookFromCheckout(int bookIndex){
-        if(this.isABookChecked()){
-<<<<<<< HEAD
+    public void removeBookFromCheckout(int bookIndex) {
+        if (this.isABookChecked()) {
+
             this.mediaLibrary.checkoutBooks.remove(bookIndex);
-=======
-            this.booksLibrary.checkoutBooks.remove(bookIndex);
->>>>>>> a09dda2b24da1f2321efcf9035e3484d67b57005
+
             System.out.println(sucessReturnBookMessage.printMessageToUser());
         } else {
             System.out.println("You have no book to return");
         }
     }
 
-    public int getUserInput(){
+    public int getUserInput() {
         Scanner scan = new Scanner(System.in);
         return scan.nextInt() - 1;
     }
@@ -61,11 +59,8 @@ public class ReturnBook implements Option {
     }
 
     public boolean isABookChecked() {
-<<<<<<< HEAD
         return !mediaLibrary.checkoutBooks.isEmpty();
-=======
-        return !booksLibrary.checkoutBooks.isEmpty();
->>>>>>> a09dda2b24da1f2321efcf9035e3484d67b57005
+
     }
 
     @Override
