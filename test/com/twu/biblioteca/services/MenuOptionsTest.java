@@ -1,8 +1,9 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.services;
 
 import com.twu.biblioteca.database.MediaLibrary;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 import com.twu.biblioteca.interfaces.Option;
+import com.twu.biblioteca.services.MenuOptions;
 import org.junit.Before;
 import org.junit.Test;
 

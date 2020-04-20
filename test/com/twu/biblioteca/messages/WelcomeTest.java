@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.messages;
 
 import com.twu.biblioteca.messages.WelcomeMessage;
 import org.junit.Before;

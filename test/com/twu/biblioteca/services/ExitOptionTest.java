@@ -1,6 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.services;
 
 import com.twu.biblioteca.interfaces.Option;
+import com.twu.biblioteca.services.ExitOption;
 import org.junit.Before;
 import org.junit.Test;
 

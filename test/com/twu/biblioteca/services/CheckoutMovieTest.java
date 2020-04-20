@@ -1,6 +1,7 @@
-import com.twu.biblioteca.Book;
-import com.twu.biblioteca.CheckoutMovie;
+package com.twu.biblioteca.services;
+
 import com.twu.biblioteca.Movie;
+import com.twu.biblioteca.services.CheckoutMovie;
 import com.twu.biblioteca.database.MediaLibrary;
 import org.junit.Before;
 import org.junit.Test;

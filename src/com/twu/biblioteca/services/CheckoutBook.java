@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.services;
 
+import com.twu.biblioteca.Book;
 import com.twu.biblioteca.database.MediaLibrary;
 import com.twu.biblioteca.interfaces.MediaCheckout;
 import com.twu.biblioteca.interfaces.Option;
