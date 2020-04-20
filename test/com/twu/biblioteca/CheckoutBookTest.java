@@ -16,7 +16,7 @@ public class CheckoutBookTest {
         library = new MediaLibrary();
         checkoutBook = new CheckoutBook(library);
     }
-    
+
 
     @Test
     public void checkoutBookTest(){

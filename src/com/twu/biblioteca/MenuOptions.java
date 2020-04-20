@@ -58,6 +58,7 @@ public class MenuOptions {
                 new CheckoutBook(this.mediaLibrary),
                 new ReturnBook(this.mediaLibrary),
                 new ListOfMovies(this.mediaLibrary),
+                new CheckoutMovie(this.mediaLibrary),
                 new ExitOption()
         ));
     }
