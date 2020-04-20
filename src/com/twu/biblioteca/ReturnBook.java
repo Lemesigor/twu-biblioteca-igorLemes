@@ -1,13 +1,14 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.database.MediaLibrary;
+import com.twu.biblioteca.interfaces.MediaReturn;
 import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.messages.InvalidBookToReturnMessage;
 import com.twu.biblioteca.messages.SucessReturnBookMessage;
 
 import java.util.Scanner;
 
-public class ReturnBook implements Option {
+public class ReturnBook implements Option, MediaReturn {
 
     MediaLibrary mediaLibrary;
     SucessReturnBookMessage sucessReturnBookMessage = new SucessReturnBookMessage();
@@ -21,11 +22,11 @@ public class ReturnBook implements Option {
     public ReturnBook() {
     }
 
-    public void returnABook() {
-        if (this.isABookChecked()) {
-            printCheckoutedBooks();
+    public void returnAMedia() {
+        if (this.isAMediaChecked()) {
+            printCheckoutedMedia();
             try {
-                removeBookFromCheckout(getUserInput());
+                removeMediaFromCheckout(getUserInput());
             } catch (Exception ex) {
                 System.out.println(invalidBookToReturnMessage.printMessageToUser());
             }
@@ -34,8 +35,8 @@ public class ReturnBook implements Option {
         }
     }
 
-    public void removeBookFromCheckout(int bookIndex) {
-        if (this.isABookChecked()) {
+    public void removeMediaFromCheckout(int bookIndex) {
+        if (this.isAMediaChecked()) {
 
             this.mediaLibrary.checkoutBooks.remove(bookIndex);
 
@@ -50,7 +51,7 @@ public class ReturnBook implements Option {
         return scan.nextInt() - 1;
     }
 
-    public void printCheckoutedBooks() {
+    public void printCheckoutedMedia() {
         System.out.println("Select the code of the book you want to return:");
         for (int i = 0; i < mediaLibrary.checkoutBooks.size(); i++) {
             System.out.println((i + 1) + " - " + mediaLibrary.checkoutBooks.get(i));
@@ -58,7 +59,7 @@ public class ReturnBook implements Option {
         System.out.println("Book code: ");
     }
 
-    public boolean isABookChecked() {
+    public boolean isAMediaChecked() {
         return !mediaLibrary.checkoutBooks.isEmpty();
 
     }
@@ -70,7 +71,7 @@ public class ReturnBook implements Option {
 
     @Override
     public void optionAction() {
-        this.returnABook();
+        this.returnAMedia();
     }
 
     @Override

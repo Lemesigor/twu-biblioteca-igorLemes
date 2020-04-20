@@ -1,13 +1,14 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.database.MediaLibrary;
+import com.twu.biblioteca.interfaces.MediaCheckout;
 import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.messages.BookNotAvaliableMessage;
 import com.twu.biblioteca.messages.SucessCheckoutMessage;
 
 import java.util.Scanner;
 
-public class CheckoutBook implements Option {
+public class CheckoutBook implements Option, MediaCheckout {
 
     MediaLibrary mediaLibraryDatabase;
     SucessCheckoutMessage sucessMessage = new SucessCheckoutMessage();
@@ -31,7 +32,7 @@ public class CheckoutBook implements Option {
     public void optionAction() {
 
         System.out.println("Type the book code: ");
-        bookChoosed();
+        mediaChoosed();
     }
 
     public int readUserInput() {
@@ -41,9 +42,9 @@ public class CheckoutBook implements Option {
 
     }
 
-    public void bookChoosed() {
+    public void mediaChoosed() {
         try {
-            checkoutBook(this.readUserInput());
+            checkoutMedia(this.readUserInput());
         } catch (Exception ex) {
             System.out.println(errorMessage.printMessageToUser());
         }
@@ -54,7 +55,7 @@ public class CheckoutBook implements Option {
         return true;
     }
 
-    public void checkoutBook(int bookIndex) {
+    public void checkoutMedia(int bookIndex) {
         Book book = getABookFromDatabase(bookIndex);
         if (isBookAvaliable(book)) {
             this.mediaLibraryDatabase.checkoutBooks.add(book);
@@ -69,6 +70,7 @@ public class CheckoutBook implements Option {
         this.mediaLibraryDatabase.avaliableBooks.remove(bookIndex);
         return book;
     }
+
 
     public boolean isBookAvaliable(Book book) {
         if (this.mediaLibraryDatabase.checkoutBooks.contains(book)) {

@@ -35,14 +35,14 @@ public class CheckoutBookTest {
     @Test
     public void checkoutBookTest(){
         int bookIndex = 1;
-        checkoutBook.checkoutBook(bookIndex);
+        checkoutBook.checkoutMedia(bookIndex);
         assertThat(library.avaliableBooks.isEmpty(), is(false));
 
     }
 
     @Test
     public void isBookCheckouted(){
-        checkoutBook.checkoutBook(1);
+        checkoutBook.checkoutMedia(1);
         Book book = library.avaliableBooks.get(1);
         assertThat(checkoutBook.isBookAvaliable(book), is(false));
     }

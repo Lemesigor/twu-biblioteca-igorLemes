@@ -36,19 +36,19 @@ public class ReturnBookTest {
     @Test
     public void isABookCheckedTest(){
         mediaLibrary.checkoutBooks.add(new Book("Test", "Test", "Test"));
-        assertThat(returnBook.isABookChecked(), is(true));
+        assertThat(returnBook.isAMediaChecked(), is(true));
 
     }
 
     @Test
     public void isABookNotCheckedTest(){
-        assertThat(returnBook.isABookChecked(), is(true));
+        assertThat(returnBook.isAMediaChecked(), is(false));
     }
 
     @Test
     public void removeBookFromCheckoutTest() {
         mediaLibrary.checkoutBooks.add(new Book("Test", "Test", "Test"));
-        returnBook.removeBookFromCheckout(0);
+        returnBook.removeMediaFromCheckout(0);
         assertThat(mediaLibrary.checkoutBooks.isEmpty(), is(true));
     }
     @Test
