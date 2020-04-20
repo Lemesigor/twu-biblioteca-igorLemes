@@ -65,12 +65,6 @@ public class CheckoutBook implements Option, MediaCheckout {
         }
     }
 
-    public Book popCheckoutBookFromList(int bookIndex) {
-        Book book = this.mediaLibraryDatabase.avaliableBooks.get(bookIndex);
-        this.mediaLibraryDatabase.avaliableBooks.remove(bookIndex);
-        return book;
-    }
-
 
     public boolean isBookAvaliable(Book book) {
         if (this.mediaLibraryDatabase.checkoutBooks.contains(book)) {

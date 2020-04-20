@@ -16,21 +16,7 @@ public class CheckoutBookTest {
         library = new MediaLibrary();
         checkoutBook = new CheckoutBook(library);
     }
-
-    @Test
-    public void popCheckoutBookFromListTest(){
-        int bookIndex = 1;
-        int sizeOfTheAvaliableBooksBeforeCheckout = library.avaliableBooks.size();
-        checkoutBook.popCheckoutBookFromList(bookIndex);
-        assertThat((library.avaliableBooks.size()), is(equalTo(sizeOfTheAvaliableBooksBeforeCheckout -1)));
-    }
-
-    @Test
-    public void getAPopedBookFromListTest(){
-        int bookIndex = 1;
-        Book book = library.avaliableBooks.get(bookIndex);
-        assertThat((checkoutBook.popCheckoutBookFromList(bookIndex)), is(equalTo(book)));
-    }
+    
 
     @Test
     public void checkoutBookTest(){
