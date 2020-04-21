@@ -11,12 +11,13 @@ public class BibliotecaLogin implements Login {
     }
 
     @Override
-    public boolean validateUsernameRegex(String libraryID) {
-        return false;
+    public boolean validateLibraryIDRegex(String libraryID) {
+
+        return libraryID.matches(this.USERNAME_MODEL_REGEX);
     }
 
     @Override
-    public boolean validateUsername(String libraryID) {
+    public boolean validateLibraryID(String libraryID) {
         return false;
     }
 
