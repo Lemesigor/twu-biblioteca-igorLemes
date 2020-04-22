@@ -4,13 +4,20 @@ import com.twu.biblioteca.database.UserRepository;
 import com.twu.biblioteca.interfaces.Login;
 import com.twu.biblioteca.interfaces.Option;
 
-import java.sql.Array;
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
 
 public class BibliotecaLogin implements Login, Option {
     String USERNAME_MODEL_REGEX = "(\\d{3})[-](\\d{4})";
     UserRepository userRepository = new UserRepository();
+    boolean[] isLogged;
+
+    public BibliotecaLogin() {
+    }
+
+    public BibliotecaLogin(boolean [] isLogged){
+        this.isLogged = isLogged;
+    }
 
     @Override
     public boolean authenticateUser(String libraryID, String password) {
@@ -51,7 +58,6 @@ public class BibliotecaLogin implements Login, Option {
         String password = scan.nextLine();
 
         String[]  responses = {id,password};
-        System.out.println(responses);
         return responses;
     }
     @Override
@@ -61,7 +67,10 @@ public class BibliotecaLogin implements Login, Option {
 
     @Override
     public void optionAction() {
-        getUserInputCredentials();
+        boolean canLogin;
+        String[] responses = getUserInputCredentials();
+        canLogin = authenticateUser(responses[0],responses[1]);
+        this.isLogged[0] = canLogin;
     }
 
     @Override

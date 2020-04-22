@@ -15,7 +15,7 @@ public class MenuOptions {
 
     List<Option> listOfOptions;
 
-    public MenuOptions(MediaLibrary mediaLibrary, boolean isUserLogged) {
+    public MenuOptions(MediaLibrary mediaLibrary, boolean[] isUserLogged) {
 
         this.mediaLibrary = mediaLibrary;
         this.initializeOptions(isUserLogged);
@@ -24,6 +24,7 @@ public class MenuOptions {
 
     public void printMenuOptionsInterface() {
         System.out.println("######## Select an option ########");
+        System.out.println("You have to be logged in in order to checkout a media");
         this.printListOfOptions();
 
     }
@@ -50,8 +51,8 @@ public class MenuOptions {
         return selectedOption.continueLoop();
     }
 
-    public void initializeOptions( boolean isLogged) {
-        if (isLogged) {
+    public void initializeOptions( boolean[] isLogged) {
+        if (isLogged[0]) {
             listOfOptions = new ArrayList<Option>(Arrays.asList(
                     new ListOfBooks(this.mediaLibrary),
                     new CheckoutBook(this.mediaLibrary),
@@ -62,10 +63,9 @@ public class MenuOptions {
             ));
         } else {
             listOfOptions = new ArrayList<Option>(Arrays.asList(
-                    new BibliotecaLogin(),
+                    new BibliotecaLogin(isLogged),
                     new ListOfBooks(this.mediaLibrary),
                     new ListOfMovies(this.mediaLibrary),
-                    new CheckoutMovie(this.mediaLibrary),
                     new ExitOption()
             ));
         }

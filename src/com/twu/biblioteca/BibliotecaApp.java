@@ -22,7 +22,7 @@ public class BibliotecaApp {
 
         boolean continueOption = true;
 
-        boolean isLoggedIn = false;
+        boolean[] isLoggedIn = {false};
 
         while (continueOption) {
             System.out.print("\n");

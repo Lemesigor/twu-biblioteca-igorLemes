@@ -19,7 +19,8 @@ public class MenuOptionsTest {
     @Before
     public void setUp() {
         mediaLibrary = new MediaLibrary();
-        menu = new MenuOptions(mediaLibrary, true);
+        boolean[]canLogin = {true};
+        menu = new MenuOptions(mediaLibrary,canLogin);
     }
 
     @Test
@@ -42,7 +43,8 @@ public class MenuOptionsTest {
 
     @Test
     public void initializeOptionsListTest(){
-        menu.initializeOptions(true);
+        boolean[]canLogin = {true};
+        menu.initializeOptions(canLogin);
 
         assertThat(menu.listOfOptions.isEmpty(), is(not(true)));
 
