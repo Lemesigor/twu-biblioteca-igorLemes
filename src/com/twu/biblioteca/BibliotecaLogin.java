@@ -2,8 +2,13 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.database.UserRepository;
 import com.twu.biblioteca.interfaces.Login;
+import com.twu.biblioteca.interfaces.Option;
 
-public class BibliotecaLogin implements Login {
+import java.sql.Array;
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
+public class BibliotecaLogin implements Login, Option {
     String USERNAME_MODEL_REGEX = "(\\d{3})[-](\\d{4})";
     UserRepository userRepository = new UserRepository();
 
@@ -36,5 +41,31 @@ public class BibliotecaLogin implements Login {
         } else {
             return false;
         }
+    }
+
+    public String[] getUserInputCredentials(){
+        Scanner  scan = new Scanner(System.in);
+        System.out.println("Biblioteca id: ");
+        String id = scan.nextLine();
+        System.out.println("Password: ");
+        String password = scan.nextLine();
+
+        String[]  responses = {id,password};
+        System.out.println(responses);
+        return responses;
+    }
+    @Override
+    public String showOptionName() {
+        return "Login";
+    }
+
+    @Override
+    public void optionAction() {
+        getUserInputCredentials();
+    }
+
+    @Override
+    public boolean continueLoop() {
+        return true;
     }
 }

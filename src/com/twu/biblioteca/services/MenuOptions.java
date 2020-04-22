@@ -1,6 +1,8 @@
 package com.twu.biblioteca.services;
 
+import com.twu.biblioteca.BibliotecaLogin;
 import com.twu.biblioteca.database.MediaLibrary;
+import com.twu.biblioteca.interfaces.Login;
 import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 
@@ -13,10 +15,10 @@ public class MenuOptions {
 
     List<Option> listOfOptions;
 
-    public MenuOptions(MediaLibrary mediaLibrary) {
+    public MenuOptions(MediaLibrary mediaLibrary, boolean isUserLogged) {
 
         this.mediaLibrary = mediaLibrary;
-        this.initializeOptions();
+        this.initializeOptions(isUserLogged);
 
     }
 
@@ -26,9 +28,6 @@ public class MenuOptions {
 
     }
 
-    public void menuOptionsLoop(){
-
-    }
     private void printListOfOptions() {
         for (int i = 0; i < this.listOfOptions.size(); i++) {
             System.out.println("(" + (i + 1) + ")  " + listOfOptions.get(i).showOptionName());
@@ -51,15 +50,24 @@ public class MenuOptions {
         return selectedOption.continueLoop();
     }
 
-    public void initializeOptions() {
-        listOfOptions = new ArrayList<Option>(Arrays.asList(
-
-                new ListOfBooks(this.mediaLibrary),
-                new CheckoutBook(this.mediaLibrary),
-                new ReturnBook(this.mediaLibrary),
-                new ListOfMovies(this.mediaLibrary),
-                new CheckoutMovie(this.mediaLibrary),
-                new ExitOption()
-        ));
+    public void initializeOptions( boolean isLogged) {
+        if (isLogged) {
+            listOfOptions = new ArrayList<Option>(Arrays.asList(
+                    new ListOfBooks(this.mediaLibrary),
+                    new CheckoutBook(this.mediaLibrary),
+                    new ReturnBook(this.mediaLibrary),
+                    new ListOfMovies(this.mediaLibrary),
+                    new CheckoutMovie(this.mediaLibrary),
+                    new ExitOption()
+            ));
+        } else {
+            listOfOptions = new ArrayList<Option>(Arrays.asList(
+                    new BibliotecaLogin(),
+                    new ListOfBooks(this.mediaLibrary),
+                    new ListOfMovies(this.mediaLibrary),
+                    new CheckoutMovie(this.mediaLibrary),
+                    new ExitOption()
+            ));
+        }
     }
 }

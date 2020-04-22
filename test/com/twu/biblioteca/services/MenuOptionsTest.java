@@ -19,7 +19,7 @@ public class MenuOptionsTest {
     @Before
     public void setUp() {
         mediaLibrary = new MediaLibrary();
-        menu = new MenuOptions(mediaLibrary);
+        menu = new MenuOptions(mediaLibrary, true);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class MenuOptionsTest {
 
     @Test
     public void initializeOptionsListTest(){
-        menu.initializeOptions();
+        menu.initializeOptions(true);
 
         assertThat(menu.listOfOptions.isEmpty(), is(not(true)));
 

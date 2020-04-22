@@ -15,7 +15,6 @@ public class BibliotecaApp {
 
         GenericMessage welcome = new WelcomeMessage();
         MediaLibrary mediaLibrary = new MediaLibrary();
-        MenuOptions menuOptions = new MenuOptions(mediaLibrary);
 
 
         System.out.println(welcome.printMessageToUser());
@@ -23,13 +22,16 @@ public class BibliotecaApp {
 
         boolean continueOption = true;
 
+        boolean isLoggedIn = false;
+
         while (continueOption) {
             System.out.print("\n");
+
+            MenuOptions menuOptions = new MenuOptions(mediaLibrary,isLoggedIn);
 
             Scanner scan = new Scanner(System.in);
             menuOptions.printMenuOptionsInterface();
             int userInputRead = scan.nextInt();
-//            scan.close();
 
             try {
                 Option optionSelected = menuOptions.choseOption(userInputRead);
