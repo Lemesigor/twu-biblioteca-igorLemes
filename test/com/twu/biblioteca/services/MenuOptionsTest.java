@@ -1,5 +1,6 @@
 package com.twu.biblioteca.services;
 
+import com.twu.biblioteca.User;
 import com.twu.biblioteca.database.MediaLibrary;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 import com.twu.biblioteca.interfaces.Option;
@@ -20,7 +21,8 @@ public class MenuOptionsTest {
     public void setUp() {
         mediaLibrary = new MediaLibrary();
         boolean[]canLogin = {true};
-        menu = new MenuOptions(mediaLibrary,canLogin);
+        User[] u = new User[1];
+        menu = new MenuOptions(mediaLibrary,canLogin,u);
     }
 
     @Test

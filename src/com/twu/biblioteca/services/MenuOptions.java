@@ -1,11 +1,11 @@
 package com.twu.biblioteca.services;
 
-import com.twu.biblioteca.BibliotecaLogin;
+import com.twu.biblioteca.User;
 import com.twu.biblioteca.database.MediaLibrary;
-import com.twu.biblioteca.interfaces.Login;
 import com.twu.biblioteca.interfaces.Option;
 import com.twu.biblioteca.exceptions.InvalidOptionException;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,11 +15,13 @@ public class MenuOptions {
 
     List<Option> listOfOptions;
 
-    public MenuOptions(MediaLibrary mediaLibrary, boolean[] isUserLogged) {
+    User[] currentUser;
+
+    public MenuOptions(MediaLibrary mediaLibrary, boolean[] isUserLogged, User[] currentUser) {
 
         this.mediaLibrary = mediaLibrary;
+        this.currentUser = currentUser;
         this.initializeOptions(isUserLogged);
-
     }
 
     public void printMenuOptionsInterface() {
@@ -47,13 +49,14 @@ public class MenuOptions {
         selectedOption.optionAction();
     }
 
-    public boolean loopingController(Option selectedOption){
+    public boolean loopingController(Option selectedOption) {
         return selectedOption.continueLoop();
     }
 
-    public void initializeOptions( boolean[] isLogged) {
+    public void initializeOptions(boolean[] isLogged) {
         if (isLogged[0]) {
             listOfOptions = new ArrayList<Option>(Arrays.asList(
+                    new ShowUserInfo(this.currentUser),
                     new ListOfBooks(this.mediaLibrary),
                     new CheckoutBook(this.mediaLibrary),
                     new ReturnBook(this.mediaLibrary),
@@ -63,7 +66,7 @@ public class MenuOptions {
             ));
         } else {
             listOfOptions = new ArrayList<Option>(Arrays.asList(
-                    new BibliotecaLogin(isLogged),
+                    new BibliotecaLogin(isLogged, this.currentUser),
                     new ListOfBooks(this.mediaLibrary),
                     new ListOfMovies(this.mediaLibrary),
                     new ExitOption()

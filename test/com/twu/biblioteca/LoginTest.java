@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.database.UserRepository;
+import com.twu.biblioteca.services.BibliotecaLogin;
 import org.junit.Before;
 import org.junit.Test;
 

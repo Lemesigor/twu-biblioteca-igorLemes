@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.services;
 
+import com.twu.biblioteca.User;
 import com.twu.biblioteca.database.UserRepository;
 import com.twu.biblioteca.interfaces.Login;
 import com.twu.biblioteca.interfaces.Option;
@@ -9,14 +10,16 @@ import java.util.Scanner;
 
 public class BibliotecaLogin implements Login, Option {
     String USERNAME_MODEL_REGEX = "(\\d{3})[-](\\d{4})";
-    UserRepository userRepository = new UserRepository();
+    public UserRepository userRepository = new UserRepository();
     boolean[] isLogged;
+    User[] currentUser;
 
     public BibliotecaLogin() {
     }
 
-    public BibliotecaLogin(boolean [] isLogged){
+    public BibliotecaLogin(boolean [] isLogged, User[] user){
         this.isLogged = isLogged;
+        this.currentUser = user;
     }
 
     @Override
@@ -44,6 +47,8 @@ public class BibliotecaLogin implements Login, Option {
     @Override
     public boolean isPasswordValid(User userFound, String password)  {
         if(userFound != null) {
+            this.currentUser[0] = userFound;
+            System.out.println(this.currentUser[0].getName());
             return userFound.getPassword().equals(password);
         } else {
             return false;

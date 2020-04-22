@@ -23,11 +23,12 @@ public class BibliotecaApp {
         boolean continueOption = true;
 
         boolean[] isLoggedIn = {false};
+        User[] currentUser = new User[1];
 
         while (continueOption) {
             System.out.print("\n");
 
-            MenuOptions menuOptions = new MenuOptions(mediaLibrary,isLoggedIn);
+            MenuOptions menuOptions = new MenuOptions(mediaLibrary,isLoggedIn, currentUser);
 
             Scanner scan = new Scanner(System.in);
             menuOptions.printMenuOptionsInterface();
